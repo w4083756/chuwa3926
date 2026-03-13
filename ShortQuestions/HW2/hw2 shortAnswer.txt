@@ -1,0 +1,27 @@
+Method overloading is multiple methods in the same class with the same name but different parameters. Method overriding is a subclass provides a specific implementation of a method already defined in its superclass. Method overloading is compile-time polymorphism. Method overriding is runtime polymorphism. 
+
+It will print “Bark!”, since object is dog, the makeSound method should use the one under Dog. 
+
+Because it will cause Diamond Problem, which is: if A and B both have a method with same signature, C don’t know which one should inherit. The solution is JAVA using interfaces to support multiple inheritance.
+
+It will compile error, because abstract class cannot instantiated. 
+
+An abstract class is a class that cannot be instantiated and may contain abstract methods. An interface is a contract that defines what a class can do, without specifying how it does it. I would prefer using an interface when multiple unrelated classes need to implement the same behavior. For example, in a payment system, different classes like credicard, paypal, and bitcoin can implement a payment interface to process payment, even though they do not share a common parent class. 
+
+The final output is:
+Animal eating
+Meow
+Upcasting is child convert to parent, and it’s safe. However,  downcasting is parent convert to child, it may fail. 
+
+1) x.equals(x) must return true
+2) if x.equals(y), then y.equal(x)
+3) if x.equals(y), y.equals(z), then x.equals(z)
+4) Multiple calls return same result (if objects don’t change)
+5) x.equals(null) must return false
+If you don’t override hashCode(), HashMap/HashSet will break.
+
+When shallow copy, both point to same address. When deep copy, each has own address copy. If I do: Person p2 = p1; p1 and p2 share the address, so if I change p2.address, it will also affect p1.address. If I do Person p2 = new Person(); p2.name = p1.name; p2.address = new Address(p1.address.city); 2 separate address objects exist. If I change p2.address.city, it will not affect p1.address.city. 
+
+The output is “Taking off from Flyable”. Class Duck is override conflicting default method, and it choose Flyable to use. 
+
+Method A, B is valid, since they have different parameter. Method C, D is not valid, because they have same parameter. 

@@ -1,0 +1,24 @@
+1.JRE includes JVM and Java Class Libraries and Java Class Loader. JDK includes JRE and javac compiler, java interpreter.loader, jar Archiver, javadoc Documentation Generator, and Debugging tools. 
+To run a compiled Java program, we need JRE.
+
+2. It will print 10, because primitive data type stores value not reference, so “a” stores 10, “b” stores the value of “a” which is also 10, if I change “b” value, it will not affect “a”.
+
+3. It will print 100, because Arrays in Java are objects, so variables store reference. “int[] arr1 = {1, 2, 3};” this line means arr1 point to {1,2,3}, “int[] arr2 = arr1;” this line means arr2 and arr1 point to the same object which is {1,2,3}, when we change arr2[0] to 100, that will also affect arr1.
+
+4. It will print true, false, true. Because s2 and s1 have the same content, system don’t create a new string pool, so s1 = s2. S3 is a new object, so s1 != s3. However, the content of s1 is same as the content of s2, so s1.equals(s3). 
+
+5. Final variables define constants, prevent modification. Final method prevent method overriding in subclass. The final class can’t extend or inheritance, it also create immutable classes. 
+
+6. Static variable belongs class, instance variable belongs to object. For example, if we want to track how many objects we have, we need a static variable since it will be shared for all objects. 
+
+7. It will compile error. Because final variable can not be reassign. 
+
+8. 4 pillar of OOP is:
+ 1) Encapsulation: bundling of data and methods that operate on that data within a single class, while restricting direct access to some components.
+2) Inheritance: is an “IS-A” relationship where a new class(subclass) is created from an existing class(superclass), inheriting its non-private fields and methods.
+3) Polymorphism: Multiple methods in the same class with the same name but different parameters.
+4) Abstraction: Hiding implementing detail while exposing essential functions.
+
+9. Encapsulation is the bundling data (fields) and methods that operate on that data within a single unit (class), while restricting direct access to some components. We make instance variables private to protect the internal state of an object from direct modification by other classes. We provide public getter and setter methods to control how the data is accessed or modified.
+
+10. The output is 3
