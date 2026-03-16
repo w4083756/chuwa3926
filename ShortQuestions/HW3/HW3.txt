@@ -1,0 +1,53 @@
+The two main branches under Throwable are Error and Exception. For Error, we have StackOverflowError, OutIfMemoryError. For Exception, we have checked exception and Runtime Exception. 
+
+Checked exception must be handled at compile time. The compiler enforced this rule. Unchecked exceptions extend RuntimeException and don’t require explicit handling. Check exception is the one the compiler forces you to handle. For checked exceptions, we have IOException and FileNotFoundException. For unchecked exceptions, we have NullPointerException and ArrayIndexOutOfBoundException.
+
+The output will be “try finally 3”. Because in try block, after print, we are about to return 1, but since we have finally block, 1 will not be returned. We don’t enter the catch block since there is no exceptions. In finally block, we print and return 3 since finally block always execute. 
+
+Throw is actually throwing an exception, throws is declaring exceptions. 
+Throw:
+Public void validAge(int age) {
+If (age < 0) {
+Throw new IllegalArgumentException(“Age cannot be negative: ” + age); }
+Throws:
+Public void readFile(String path) throws FileNotFoundException {
+FileReader reader = new FileReader(path); }  
+
+It will throw Error 3. Because in try block, it will be caught immediately. In catch block, before we throw something, we need to execute finally block first. So in finally block, we throw Error 3. 
+
+No, Enum cannot extend another class because in Java, every enum implicitly extends the class, Java does not support multiple inheritance of classes, thus, an enum cannot extend another class. 
+However, enum can implement interface because Java allow multiple interface implementations. 
+
+The output is:
+PENDING -> 0 -> 0
+PROCESSING -> 1 -> 1
+COMPLETED -> 2 -> 2
+
+In aggregation, the contained object can exist independently of the container, it’s a HAS-A weak relationship. In composition, the contained object’s lifecycle is tied to the container, it’s a PART-OF, strong relationship.
+Aspect                                          Aggregation                              Composition
+Relationship Type                         HAS-A(weak)                            PART-OF(strong)
+Lifecycle                                       Independent                               Dependent
+Object Creation Location             Outside the container                 Inside the container
+UML Symbol                               Empty diamond                          Filled diamond
+Example                                       Person-Country                          Car-Engine
+
+The relationship between library and book is an aggregation. Because a book can exit without a library, the library does not create the book, and the book object passed from outside. 
+
+The 3 key elements of Singleton pattern are:
+Private static instance variable
+Private constructor (prevents new instances)
+Public static getInstance() method
+	The constructor is private because it prevent new instances. 
+
+Eager initialization: Instance is created when the class is loaded. 
+Lay initialization: Instance is created only when first requested. Uses static inner class for thread safety.
+Eager initialization created instance first because it’s created when the class is loaded.
+
+It’s not correct. 1. It’s not thread safe. 2. The constructor should be private. 
+public class Singleton {
+	private static Singleton instance = new Singleton();
+	private Singleton() {};
+	public static Singleton getInstance() {
+		return instance; 
+	}
+}
