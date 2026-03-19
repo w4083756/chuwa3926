@@ -1,0 +1,81 @@
+1. The functional interface is an interface with exactly one abstract method. @FunctionalInterface annotation 
+is used for mark FunctionalInterface, and it's optional.It can have mutiple default and static method. 
+@FunctionalInterface annotation is for complile-time validation. Lambda expression implement the abstract method.
+Examples: Funtion<T, R>, abstract method: R apply(T t), this convert T type to R type. 
+Examples: Predicate<T>, abstract method: boolean test(T t), filter availibility.
+
+2. The output will be "Hello from Greeting" "And hello from Person". class persob override the sayHello method
+and it choose the method from greeting. After that, there is another print statment. 
+
+3.  Step 1: Remove boilerplate
+    (String s1, String s2) -> {return s1.length() - s2.length();}
+    Step 2: Remove parameter type
+    (s1, s2) -> {return s1.length() - s2.length();}
+    Step 3: Single statement? Remove braces {} and 'return' keyword
+    (s1, s2) -> s1.length() - s2.length();
+
+4. A. Valid
+   B. Invalid, return without braces
+   C. Invalid, braces without return, need 2 parameter
+   D. Valid
+   E. Valid
+   F. Valid
+
+5.  1-B, bound
+    2-D, unbound
+    3-C, static
+    4-A, constructor
+    5-E, unbound
+
+6. Optional.of(value): value is guaranteed non-null, if value is null, it will throw NPE
+    Optional.ofNullable(value): value might be null, if value is null, return empty optional.
+    The code will throw NPE.
+
+7. The output will be:
+    --- Using orElse ---
+    Creating default value
+    Result:  + Default
+    --- Using orElseGet ---
+    Result: Default
+   The difference between orElse() and orElseGet() is orElse() always execute but orElseGet() only execute when
+   the value is empty.
+
+8. map() is one to one, flatMap() is one to many. 
+    List<String> allProductNames = orders.stream().flatMap(order -> order.getProducts().stream()).map(product ->
+    getName()).collect(Collectors.toList());
+
+9. The output will be:
+    Stream created
+    Calling findFirst...
+    Filtering: 1
+    Filtering: 2
+    Mapping: 2
+    Result: 20
+   The concept of lazy evaluation is: Nothing runs until terminal operation, Element-by-element processing, and 
+   Short-circuiting(findFirst() stops as soon as it finds a result)
+
+10. 1) Optional is mainly intended as a return type, not as a method parameter.
+    The first part should change to:
+    public void processProducts(List<Product> products) {
+        if (products == null) return;
+
+        products.forEach(this::process);
+    }
+    2) For the second method, the return class is optional, this part: 
+    if (products == null || products.isEmpty()) {
+        return null;
+    }
+    should change to 
+    if (products == null || products.isEmpty()) {
+        return Optinal.empty();
+    }
+    3) Not every product have price, so we need use filter, so this part: 
+    BigDecimal total = products.stream()
+    .map(Product::getPrice)
+    .reduce(BigDecimal.ZERO, BigDecimal::add);
+    should change to:
+    BigDecimal total = products.stream()
+    .map(Product::getPrice)
+    .filter(Objects::nonNull)
+    .reduce(BigDecimal.ZERO, BigDecimal::add);
+
