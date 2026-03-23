@@ -1,0 +1,85 @@
+2.
+public class Singleton {
+    private Singleton() {}
+
+    private static class SingletonHolder {
+        private static final Singleton INSTANCE = new Singleton();
+    }
+
+    public static Singleton getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
+}
+
+3. Extend Thread class, implements Runnable, and implement Callable. A thread pool reuses a group of threads instead
+of creating a brand new thread every time. This improves performance and avoids creating too many threads.
+
+4. runnable has no return, callable has return and expect checked exception.
+
+5.  t.start() start a new thread to execute the task (run())
+    t.run() execute the task in current thread.
+
+6. Implement runnable is better, because it seperate the task from thread.
+
+7. NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED.
+
+8. Deadlock:
+    Thread 1 holds Lock A and waits for Lock B
+    Thread 2 holds Lock B and waits for Lock A
+   How to solve:
+    1) Use consistent lock ordering, always acquire locks in the same order.
+    2) Use reentrantLock.tryLock() with timeout, so threads don't wait forever and can back off and retry.
+
+9. Threads communication mainly through shared memory. Coordination is achieved using mechanisms like wait(), notify(),
+   volatile variables for visibility, and higher-level utilities such as BlockingQueue, Locks, and Futures. In practice,
+   we prefer high-level concurrency utilities like BlockingQueue because they are safer and easier to use.
+
+10. Object lock is associated with a specific instance, so each object has its own lock and threads can run concurrently
+    on different objects. Class lock is associated with the Class object itself and is shared across all instances, so only
+    one thread can execute static synchronized code at a time. Also, static and instance locks are different, so they do not
+    block each other.
+
+11. The join() method in java is used to make one thread wait for another thread to finish execution.
+
+12. Thread.yield() is a hint to the scheduler that the current thread is willing to pause and let other threads run.
+
+13. A ThreadPool is a group of reusable threads used to execute multiple tasks, instead of creating a new thread for each task.
+    ThreadPool have 1)Fixed Thread Pool, 2)Cached Thread Pool, 3)Single Thread Pool, 4)Scheduled Thread Pool.
+    TaskQueue stores tasks that are waiting to be executed when all threads are busy.
+
+14. Java ThreadPool is provided by: java.util.concurrent
+    The core interface is ExecutorService
+
+15. You submit tasks to a ThreadPool using ExecutorService methods like: execute(), submit()
+
+16. The main advantage of a ThreadPool is reusing threads to improve performance and control system resources.
+
+17. shutdown() stops accepting new tasks, continues executing already submitted tasks, and waits for tasks to finish.
+    shutdownNow() stops accepting new tasks, attempts to interrupt running threads, and returns tasks that were not executed.
+
+18. Atomic classes are classes in java.util.concurrent.atomic that provide thread-safe, lock-free operations on single variables.
+    Atimic classes have 1)Basic types: AtomicInteger, AtomicLong, AtomicBoolean 2)Reference type: AtomicReference<T>
+    3)Array types: AtomicIntegerArray, AtomicLogArray, AtomicReferenceArray.
+    get(): get value, set(): set value, incrementAndGet(): ++value, getAndIncrement() value++, addAndGet(n): add n
+    compareAndSet(a, b): CAS operation, getAndSet(v): atomic replace.
+
+19. Concurrent collections are thread-safe data structures provided in java.util.concurrent that allow multiple threads to acces
+    and modify data safely without external synchronization.
+    1)ConcurrentHashMap, 2)CopyOnWriteArrayList, 3)CopyOnWriteArraySet, 4)BlockingQueue, 5)ConcurrentLinkedQueue,
+    6)ConcurrentSkipListMap/Set
+
+20. 1)Intrinsic lock(synchronized): simple and easy to use, automatically releases lock, JVM optimized.
+    2)ReentrantLock: can lock/unlock manually, supports tryLock() to avoid deadlock, support timeout, interruptive lock, can be
+    fair lock
+    3)ReadWriteLock: multiple threads can read simultaneously, and improves performance for read-heavy system.
+    4)StampedLock: Optimistic locking, better performance than ReadWriteLock.
+    5)CountDownLatch: wait for multiple threads to finish.
+
+21. A future represents the result of an asynchronous computation.
+    CompletableFuture is an advanced version of Future that support non-blocking, asynchronous, and composable operations.
+    The main methods of CompletableFuture are: 1) Create tasks: CompletableFuture.runAsync(() -> {}),
+    CompletableFuture.supplyAsync(() -> 10)
+    2)Transform results: thenApply(fn), thenApplyAsync(fn)
+    3)Consume results: thenAccept(result -> {}), thenRun(() -> {})
+
+22.
