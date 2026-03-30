@@ -1,0 +1,79 @@
+March 27th 2026 Assignment
+DUE: March 30th 2026 5:30PM Pacific Time.
+
+Install MySQL/PostgreSQL on your computer, setup proper accounts, try SQL queries included in attached two files.
+1.Explain Referential Integrity in RDBMS/SQL with sample queries.
+-- Create Student Schema --
+CREATE TABLE student (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(100) NOT NULL,
+    gender ENUM('Male', 'Female') NOT NULL,
+    birth_date DATE,
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id)
+);
+
+-- Insert Student Records --
+INSERT INTO student (student_id, student_name, gender, birth_date, dept_id)
+VALUES
+(1001, 'John Zhang', 'Male', '2001-05-01', 101),
+(1002, 'Lisa Li', 'Female', '2002-08-12', 102),
+(1003, 'Kevin Wang', 'Male', '2000-11-21', 201);
+
+For this part, it's a invalid insert since there is no department yet. If we want to insert, we need to create a department first.
+Such as:
+INSERT INTO department (dept_id, dept_name, building, school_id)
+VALUES (101, 'Computer Science', 'Information Hall', 1);
+
+Referential integrity ensures that relationships between tables remain consistent. It enforces that a foreign key must reference
+an existing primary key in another table or be NULL. This prevents invalid or orphan records and maintains data integrity.
+
+2. Explain Join in RDBMS/SQL with sample queries.
+
+SELECT
+    s.student_name,
+    d.dept_name,
+    sc.school_name
+FROM student s
+JOIN department d ON s.dept_id = d.dept_id
+JOIN school sc ON d.school_id = sc.school_id;
+
+this will Returns ONLY rows where:
+1)student has a valid department
+2)department has a valid school
+A JOIN in SQL is used to combine rows from two or more tables based on a related column. INNER JOIN returns only matching rows,
+LEFT JOIN returns all rows from the left table, RIGHT JOIN returns all rows from the right table, and FULL JOIN returns all rows
+from both tables.
+
+Answer following questions:
+3. Compare Developer API vs User API
+Developer APIs are interfaces designed for programmatic access by developers, typically using HTTP and returning structured data
+like JSON. User APIs refer to interfaces designed for human users, such as web or mobile UIs, which internally use developer APIs
+to fetch and display data.
+
+4. Explain components of REST API?
+A REST API consists of resources identified by URIs, HTTP methods to perform operations, requests and responses that carry data,
+status codes to indicate outcomes, headers for metadata, and representations like JSON. It also follows a stateless architecture
+where each request is independent.
+
+5. Compare each type of HTTP Method
+HTTP methods define the type of operation in a REST API. GET retrieves data and is safe and idempotent. POST creates new resources
+and is not idempotent. PUT replaces a resource and is idempotent. PATCH partially updates a resource. DELETE removes a resource
+and is idempotent. When we have missing field, put will overwritten the missing field, patch will not change it.
+
+6. Explain authentication field in http header?
+The Authorization header in HTTP is used to send authentication credentials from the client to the server. It typically follows
+the format “Authorization: type credentials”, such as Bearer tokens or Basic authentication. The server validates these
+credentials to verify the identity of the client and determine access permissions.
+
+7. Explain cookies field in http header?
+The Cookie header in HTTP is used by the client to send stored key-value data to the server. Cookies are set by the server using
+the Set-Cookie header and are automatically included in subsequent requests. They are commonly used for session management, user
+tracking, and maintaining state in stateless HTTP.
+
+8. Explain the purpose of http response headers? Why it is necessary?
+HTTP response headers provide metadata about the server’s response. They define how the client should interpret the response body,
+manage caching, maintain sessions, enforce security, and handle redirection. They are necessary because they enable proper
+communication between client and server beyond just the data itself.
+
+
