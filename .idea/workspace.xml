@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4144c333-600e-43ad-b3e3-94b3bb9336a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ShortQuestions/HW6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hw7/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hw7/annotation/MyAutowired.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hw7/annotation/MyComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hw7/annotation/MyScope.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hw7/context/MyBeanFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hw7/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hw7/service/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hw7/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +47,10 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/Users/andywang/Desktop/Chuwa/chuwa3926",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RunManager">
@@ -63,6 +70,19 @@
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="chuwa3926" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="chuwa3926" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
